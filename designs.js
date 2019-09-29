@@ -12,23 +12,21 @@ selSize.addEventListener("submit", function(event) {
     makeGrid();
 });
 
-// When size is submitted by the user, call makeGrid()
-
 function makeGrid() {
+    //
+    var height = document.getElementById("inputHeight").value;
+    var width = document.getElementById("inputWidth").value;
+    pixelCanvas.innerHTML = null;
 
-var height = document.getElementById("inputHeight").value;
-var width = document.getElementById("inputWidth").value;
-pixelCanvas.innerHTML = null;
-
-//loop over each row and column or cell and change its color based on selected color
-for (var h = 0; h < height; h++) {
-    var row = pixelCanvas.insertRow(h);
-    for (var w = 0; w < width; w++) {
-        var cell = row.insertCell(h);
-        cell.addEventListener('click', function(event) {
-            // change color of cell when it is clicked
-            event.target.style.backgroundColor = selColor.value;
-        });
-      }
+    //loop over each row and column or cell and change its color based on selected color
+    for (var h = 0; h < height; h++) {
+        var row = pixelCanvas.insertRow(h);
+        for (var w = 0; w < width; w++) {
+            var cell = row.insertCell(w);
+            cell.addEventListener('click', function(event) {
+                // change color of cell when it is clicked
+                event.target.style.backgroundColor = selColor.value;
+            });
+        }
     }
 }
